@@ -1,8 +1,10 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include "omp.h"
 #include <chrono>
 #include "funciones.h"
+#include "Estudiante.h"
 
 
 using namespace std;
@@ -46,9 +48,9 @@ int main(int argc, char** argv) {
 #pragma omp task
                         {
                             string rutaSalida = argv[3];
-                            std::vector<int> puntajes = obtenerPuntajes(linea);
+                            std::vector<int> puntajes = obtenerDatos(linea);
                             if(puntajes.size() >= 6) {
-                                
+                                                               
                                 int rut = puntajes.at(0);
                                 int nem = puntajes.at(1);
                                 int ranking = puntajes.at(2);
@@ -57,9 +59,14 @@ int main(int argc, char** argv) {
                                 int ciencias = puntajes.at(5);
                                 int historia = puntajes.at(6);
 
-                                //calculo de porcentajes para cada carrera  
-                                //###################################
-                                //escribir el resultado
+                                Estudiante estudiantes(int rut, int nem, int ranking, int matematica, int lenguaje, int ciencias, int historia);
+                                //arreglo.push_back(estudiantes);
+
+                                //calculo de porcentajes para cada carrera
+                                std::vector<string> fila;  
+                                fila = calcularPonderacion(nem, ranking, matematica, lenguaje, ciencias, historia);
+                                rutaSalida = rutaSalida + fila[0] + ".txt";
+                                std::ofstream salida(rutaSalida, fstream::app);
 #pragma omp critical                                
                                 salida << rut << ", " << fila.at(1) << std::endl;
                                 salida.close();
@@ -71,7 +78,7 @@ int main(int argc, char** argv) {
             }else{
                 cout << "fallo el archivo" << endl;
             }
-
+            std::cout << duration.count() << "s" << std::endl;
         }
         else if(opcion == 2){
             //busqueda de rut

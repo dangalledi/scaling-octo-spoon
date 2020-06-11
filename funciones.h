@@ -14,16 +14,9 @@ void participantes();
 /**
  * 
  * @param linea linea del archivo
- * @return vector con puntajes
+ * @return vector con catos
  */
-std::vector<int> obtenerPuntajes(std::string linea);
-
-/**
- * 
- * @param linea
- * @return 
- */
-std::vector<int> obtenerPonderaciones(std::string linea);
+std::vector<int> obtenerDatos(std::string linea);
 
 /**
  * 
