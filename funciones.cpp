@@ -11,25 +11,12 @@ void participantes() {
     std::cout << std::endl << "Daniela Galleguillos" << std::endl;
 }
 
-std::vector<int> obtenerPuntajes(std::string linea) {
+std::vector<int> obtenerDatos(std::string linea) {
     std::vector<int> arreglo;
     std::stringstream ss(linea);
     std::string item;
 
     while (std::getline(ss, item, ';')) {
-        int valor = atoi(item.c_str());
-        arreglo.push_back(valor);
-    }
-
-    return arreglo;
-}   
-
-std::vector<int> obtenerPonderaciones(std::string linea) {
-    std::vector<int> arreglo;
-    std::stringstream ss(linea);
-    std::string item;
-
-    while (std::getline(ss, item, ',')) {
         int valor = atoi(item.c_str());
         arreglo.push_back(valor);
     }
