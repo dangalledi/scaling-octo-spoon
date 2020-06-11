@@ -1,5 +1,5 @@
 # Taller 2 Analisis y algoritmos
-
+[![Run on Repl.it](https://repl.it/badge/github/dangalledi/scaling-octo-spoon)](https://repl.it/github/dangalledi/scaling-octo-spoon)
 ## Objetivos
 
 1. Investigar y usar algoritmos de ordenamiento.
