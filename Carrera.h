@@ -1,35 +1,36 @@
 #ifndef CARRERA_H
 #define CARRERA_H
-#include <iostream>
 #include <vector>
+#include <iostream>
 
-using namespace std;
 
 class Carrera {
 public:
     Carrera();
-    Carrera(std::vector<int> arreglo);
+    Carrera(std::string datos);
     virtual ~Carrera();
-    int GetCodigo();
-    int GetNem();
-    int GetRanking();    
-    int GetMatematica();
-    int GetLenguaje();
-    int GetCieHist();
-    int GetPtMin();
-    int GetVacantes();
-    int GetPrim();
-    int GetUlt();
-    void SetCodigo(int Codigo);
-    void SetNem(int Nem);
-    void SetRanking(int Ranking);    
-    void SetMatematica(int Matematica);
-    void SetLenguaje(int Lenguaje);
-    void SetCieHist(int CieHist);
-    void SetPtMin(int PtMin);
-    void SetVacantes(int Vacantes);
-    void SetPrim(int Prim);
-    void SetUlt(int Ult);
+    int GetCieHist() const;
+    void SetCieHist(int cieHist);
+    int GetCodigo() const;
+    void SetCodigo(int codigo);
+    int GetLenguaje() const;
+    void SetLenguaje(int lenguaje);
+    int GetMatematica() const;
+    void SetMatematica(int matematica);
+    int GetNem() const;
+    void SetNem(int nem);
+    int GetPrim() const;
+    void SetPrim(int prim);
+    int GetPtMin() const;
+    void SetPtMin(int ptMin);
+    int GetRanking() const;
+    void SetRanking(int ranking);
+    int GetUlt() const;
+    void SetUlt(int ult);
+    int GetVacantesTotales() const;
+    void SetVacantesTotales(int vacantesTotales);
+    int GetVacantes() const;
+    void SetVacantes(int vacantes);
     void ImprimirCarrera( );
 private:
     int codigo;
@@ -39,6 +40,7 @@ private:
     int lenguaje;
     int cieHist;
     int ptMin;
+    int vacantesTotales;
     int vacantes;
     int prim;
     int ult;

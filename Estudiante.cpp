@@ -1,5 +1,7 @@
 #include "Estudiante.h"
 #include <vector>
+#include <sstream>
+#include <iostream>
 
 Estudiante::Estudiante() {
     rut = 0;
@@ -11,69 +13,93 @@ Estudiante::Estudiante() {
     historia = 0;
 }
 
-Estudiante::Estudiante( vector<int> arreglo ){
-    std::vector<int> valores;    // esto esta mal tiene que ir afuerita :C 
-    valores = obtenerDatos(texto);
-    rut = Rut;
-    nem = Nem;
-    ranking = Ranking;
-    matematica = Matematica;
-    lenguaje = Lenguaje;
-    ciencias = Ciencias;
-    historia = Historia;
+Estudiante::Estudiante( std::string datos ){
+    std::vector<int> valores;
+    std::stringstream ss(datos);
+    std::string item;
+
+    while (std::getline(ss, item, ',')) {
+      int valor = atoi(item.c_str());
+      valores.push_back(valor);
+    }
+    
+    if(valores.size() >= 6){
+      this->rut = (float) valores.at(0);
+      this->nem = (float) valores.at(1);
+      this->ranking = (float) valores.at(2);
+      this->matematica = (float) valores.at(3);
+      this->lenguaje = (float) valores.at(4);
+      this->ciencias = (float) valores.at(5);
+      this->historia = (float) valores.at(6);
+    }   
 }
 
 Estudiante::~Estudiante() {
+  
 }
-int Estudiante::GetRut(){
-  return rut ;
+int Estudiante::GetCiencias() const {
+    return ciencias;
 }
-int Estudiante::GetNem(){
-  return nem ;
+
+void Estudiante::SetCiencias(int ciencias) {
+    this->ciencias = ciencias;
 }
-int Estudiante::GetRanking(){
-  return ranking ;
+
+int Estudiante::GetHistoria() const {
+    return historia;
 }
-int Estudiante::GetMatematica(){
-  return matematica ;
+
+void Estudiante::SetHistoria(int historia) {
+    this->historia = historia;
 }
-int Estudiante::GetLenguaje(){
-  return lenguaje ;
+
+int Estudiante::GetLenguaje() const {
+    return lenguaje;
 }
-int Estudiante::GetCiencias(){
-  return ciencias ;
+
+void Estudiante::SetLenguaje(int lenguaje) {
+    this->lenguaje = lenguaje;
 }
-int Estudiante::GetHistoria(){
-  return historia ;
+
+int Estudiante::GetMatematica() const {
+    return matematica;
 }
-void Estudiante::SetRut(int Rut){
-  this -> rut = Rut ;
+
+void Estudiante::SetMatematica(int matematica) {
+    this->matematica = matematica;
 }
-void Estudiante::SetNem(int Nem){
-  this -> nem = Nem ;
+
+int Estudiante::GetNem() const {
+    return nem;
 }
-void Estudiante::SetRanking(int Ranking){
-  this -> ranking = Ranking ;
+
+void Estudiante::SetNem(int nem) {
+    this->nem = nem;
 }
-void Estudiante::SetMatematica(int Matematica){
-  this -> matematica = Matematica ;
+
+int Estudiante::GetRanking() const {
+    return ranking;
 }
-void Estudiante::SetLenguaje(int Lenguaje){
-  this -> lenguaje = Lenguaje ;
+
+void Estudiante::SetRanking(int ranking) {
+    this->ranking = ranking;
 }
-void Estudiante::SetCiencias(int Ciencias){
-  this -> ciencias = Ciencias ;
+
+int Estudiante::GetRut() const {
+    return rut;
 }
-void Estudiante::SetHistoria(int Historia){
-  this -> historia = Historia ;
+
+void Estudiante::SetRut(int rut) {
+    this->rut = rut;
 }
 void Estudiante::ImprimirEstudiante()
 {
-    cout << "rut : " << rut << endl;
-    cout << "nem : " << nem << endl;
-    cout << "ranking : " << ranking << endl;
-    cout << "matematica : " << matematica << endl;
-    cout << "lenguaje : " << lenguaje << endl;
-    cout << "ciencias : " << ciencias << endl;
-    cout << "historia : " << historia << endl;
+    std::cout << "Rut : " << rut << std::endl;
+    std::cout << "Nem : " << nem << std::endl;
+    std::cout << "Ranking : " << ranking << std::endl;
+    std::cout << "Matematica : " << matematica << std::endl;
+    std::cout << "Lenguaje : " << lenguaje << std::endl;
+    std::cout << "Ciencias : " << ciencias << std::endl;
+    std::cout << "Historia : " << historia << std::endl;
+    std::cout << "-------------------------------------------"  << std::endl;
 } 

@@ -2,9 +2,12 @@
 #define FUNCIONES_H
 
 #include <iostream>
-#include <random>
+#include <stdio.h>
 #include <vector>
-#include <string.h>
+#include <fstream>
+#include <sstream>
+
+#include "Carrera.h"
 
 /**
  * Función que muestra los participantes del grupo
@@ -13,10 +16,34 @@ void participantes();
 
 /**
  * 
- * @param linea linea del archivo
- * @return vector con catos
+ * @param Línea leída desde un archivo
+ * @return el arreglo con los datos
  */
 std::vector<int> obtenerDatos(std::string linea);
+
+/**
+ * Crea un vector de carreras con los datos de un archivo admision.csv
+ * @return Vector con carreras 
+ */
+std::vector<Carrera> VectorDeCarreras();
+
+/**
+ * Imprime en la salida estándar un vector
+ * @param arreglo Vector a mostrar
+ */
+void imprimirVectordeCarreras(std::vector<Carrera> arreglo);
+
+/**
+ * Funcion que ordena carreras por cantidad de vacantes
+ */
+void quickSortVacantes(std::vector<Carrera>& arreglo, int inicio, int final);
+int partitionVacantes(std::vector<Carrera>& arreglo, int inicio, int final);
+
+/**
+ * Funcion que ordena carreras por primer matriculado 
+ */
+void quickSortPrimer(std::vector<Carrera>& arreglo, int inicio, int final);
+int partitionPrimer(std::vector<Carrera>& arreglo, int inicio, int final);
 
 /**
  * 
